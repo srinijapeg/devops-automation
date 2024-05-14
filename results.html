@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNS Lookup Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: transparent;
+        }   
+        .container {
+            max-width: 100%;
+            padding: 40px;
+            background-color: rgb(8, 13, 59);
+            /* background-color: rgb(46, 50, 90); */
+            border-radius: 12px;
+            box-shadow: 0px 0px 20px rgba(199, 118, 118, 0.2);
+            overflow-x: hidden;
+            
+        } 
+        
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            /* color: rgb(247, 128, 22); */
+        }
+        h4 {
+            color: #ffffff;
+        }
+ 
+        .results {
+            margin-top: 30px;
+            border-top: 1px solid #0f0e0e;
+            padding-top: 20px; 
+    
+        }
+        .results h2 {
+            margin-top: 0;
+            color: #ffffff;
+        }
+        .record {
+            margin-bottom: 5px;
+            word-wrap: break-word;
+            /* color: #ff8400; */
+            color: rgb(247, 128, 22);
+        }
+        .error {
+            color: red;
+            /* font-size: 18px; */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- <img src="logo.jpg" alt="Logo" style="position: absolute; top: 20px; left: 20px; width: 200px;"> -->
+        <h1>DNS Lookup Results for {{ domain }}</h1>
+
+        <div class="results">
+            <h2>Domain IP Addresses</h2>
+            {% if dns_results %} 
+                <ul>
+                    {% for result in dns_results %}
+                        <li class="record">{{ result }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="error">No IP  records found.</p>
+            {% endif %}
+        </div>
+
+        <div class="results">
+            <h2>DNS Hosting Provider</h2>
+            <h4>DNS Record Published </h4>
+            {% if hosting_provider %}
+            <ul>
+                <li class="record">{{ hosting_provider }}</li>
+            </ul>    
+            {% else %}
+                <p class="error">No DNS hosting provider found, needs Attention.</p>
+            {% endif %}
+        </div>
+
+        <div class="results">
+            <h2>DNS Hosting Provider Name</h2>
+            {% if dns_provider %}
+            <ul>
+                <li class="record">{{ dns_provider }}</li>
+            </ul>    
+            {% else %}
+                <p class="error">No DNS hosting provider found, needs Attention.</p>
+            {% endif %}
+        </div>
+
+        <div class="results">
+            <h2>MX Records</h2>
+            {% if mx_results %}
+                <ul>
+                    {% for result in mx_results %}
+                        <li class="record">{{ result }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="error">No MX records found, needs Attention.</p>
+            {% endif %}
+        </div>
+        
+        <div class="results">
+            <h2>DMARC Records</h2>
+            {% if dmarc_results %}
+                <ul>
+                    <h4>DMARC Record Published </h4>
+                    {% for result in dmarc_results %}
+                        <li class="record">{{ result }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="error">No DMARC records found, needs Attention.</p>
+            {% endif %}
+        </div>
+        
+        <div class="results">
+            <h2>DKIM Records</h2>
+            {% if dkim_results %}
+                <ul>
+                    <h4>DKIM Record Published </h4>
+                    {% for result in dkim_results %}
+                        <li class="record">{{ result }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="error">No DKIM records found, needs Attention.</p>
+            {% endif %}
+        </div>
+
+        <div class="results">
+            <h2>SPF Records</h2>
+            {% if spf_results %}
+                <ul>
+                    <h4>SPF Record Published </h4>
+                    {% for result in spf_results %}
+                        <li class="record">{{ result }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="error">No SPF records found, needs Attention.</p>
+            {% endif %}
+          
+        </div>
+
+        <div class="results">
+            <h2>MTA-STS Records</h2>
+            {% if mta_sts_results %}
+                <ul>
+                    <h4>MTA-STS Record Published </h4>
+                    {% for result in mta_sts_results %}
+                        <li class="record">{{ result }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="error">No MTA-STS records found, needs Attention.</p>
+            {% endif %}
+        </div>
+
+        <div class="results">
+            <h2>TXT Records</h2>
+            {% if txt_results %}
+                <ul>
+                    <h4>TXT Record Published </h4>
+                    {% for result in txt_results %}
+                        <li class="record">{{ result }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="error">No TXT records found, needs Attention.</p>
+            {% endif %}
+        </div>
+    
+
+</body>
+</html>

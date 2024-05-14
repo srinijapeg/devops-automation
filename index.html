@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNS Lookup</title>
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }   
+        .container {
+            max-width: 100%;
+            padding: 40px;
+            background-color: #566092;
+            border-radius: 8px;
+            box-sizing: border-box;
+            min-height: 100vh;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);   
+        } 
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+        }
+        form {
+            text-align: center;
+        }
+        label {
+            font-size: 18px;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+        input[type="text"] {
+            width: 50%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+        button[type="submit"] {
+            display: block;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #d46a19;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            margin: 0 auto;
+            width: fit-content;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>DNS Lookup</h1>
+        <form action="/results" method="post">
+            <label for="domain">Enter domain:</label>
+            <input type="text" id="domain" name="domain" required>
+            <button type="submit">Lookup</button>
+        </form>
+    </div>
+</body>
+</html>
